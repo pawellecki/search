@@ -31,12 +31,13 @@ export const App = () => {
   return (
     <div className="app">
       <div className="content">
-        <input className="baseInput startInput" onClick={() => setOpen(true)} />
+        <input className="baseInput startInput" value={name} onClick={() => setOpen(true)} />
         {open && (
           <div ref={outsideClickRef} className="box">
             <input
               ref={inputRef}
               className="baseInput"
+              value={name}
               onChange={(e) => updateName(e.target.value)}
             />
             <PokemonsList pokemons={(name && data?.data) || []} />

@@ -5,7 +5,7 @@ const fakeAsyncFn = () =>
     new Promise((resolve) => {
         setTimeout(() => {
             resolve("ok");
-        }, 1000);
+        }, 400);
     });
 
 
