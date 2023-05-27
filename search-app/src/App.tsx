@@ -1,35 +1,43 @@
-import { useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useOutsideClick } from './hooks/useOutsideClick';
+import { useGetBeersByName } from './hooks/useGetBeersByName';
+import { BeersList } from './components/BeersList';
 
-import './App.css';
+export const App = () => {
+  const [name, setName] = useState('');
+  const [open, setOpen] = useState(true);
 
-function App() {
-  const [open, setOpen] = useState(false);
-
-  const ref = useOutsideClick(() => {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const outsideClickRef = useOutsideClick(() => {
     setOpen(false);
   });
+  const { data = [], isLoading } = useGetBeersByName(name);
 
-  const updateValue = (value: string) => {
-    // setValue(value);
+  const updateName = (query: string) => {
+    setName(query);
   };
+
+  useEffect(() => {
+    if (open) {
+      inputRef.current?.focus();
+    }
+  }, [open]);
 
   return (
     <div className="app">
       <div className="content">
         <input className="baseInput startInput" onClick={() => setOpen(true)} />
         {open && (
-          <div ref={ref} className="box">
-            <input className="baseInput" onClick={() => setOpen(true)} />
-            <ul>
-              <li>aa</li>
-              <li>bb</li>
-            </ul>
+          <div ref={outsideClickRef} className="box">
+            <input
+              ref={inputRef}
+              className="baseInput"
+              onChange={(e) => updateName(e.target.value)}
+            />
+            <BeersList beers={data} />
           </div>
         )}
       </div>
     </div>
   );
-}
-
-export default App;
+};
