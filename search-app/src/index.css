@@ -33,7 +33,7 @@ body {
 }
 
 .baseInput {
-  width: 561px;
+  width: 560px;
   height: 48px;
   font-size: 1.6rem;
   border:none;
@@ -63,5 +63,41 @@ body {
 
 .box input {
   padding: 0 53px;
+}
 
+.pagination {
+  width: 560px;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  top: 330px
+}
+
+.pagination > button {
+  width: 10%;
+}
+
+.paginationNumbers {
+  width: 80%;
+  padding: 0 4px;
+}
+
+.paginationNumbers button {
+  margin: 0 4px;
+}
+
+.button {
+  padding: 2px;
+  background-color: #fff;
+  font-weight: bold;
+  background: #1a73e8;
+  border-radius: 4px;
+  color: #fff;
+  border:none;
+  cursor:pointer
+}
+
+.button:disabled {
+  cursor:auto;
+  background: lightblue;
 }
