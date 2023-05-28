@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { allPokemons } from "../pokemon"
+import { allPokemonsArray } from "../pokemon"
 
 const fakeAsyncFn = () =>
     new Promise((resolve) => {
@@ -12,12 +12,12 @@ const fakeAsyncFn = () =>
 const getPokemonsByName = async (name: string, page: number, perPage: number) => {
     await fakeAsyncFn()
 
-    let filteredData = allPokemons;
+    let filteredData = allPokemonsArray;
 
     if (name) {
         const searchName = name.toLowerCase();
 
-        filteredData = allPokemons.filter(pokemon =>
+        filteredData = allPokemonsArray.filter(pokemon =>
             pokemon.name.toLowerCase().startsWith(searchName)
         );
     }

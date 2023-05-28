@@ -19,17 +19,27 @@ body {
   box-sizing: border-box;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+a:link, a:visite {
+  text-decoration: none;
+}
+
 .app {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 100vh;
-  justify-content: center;
   align-items: center;
+  padding-top: 100px;
 }
 
 .content {
   position: relative;
-  height: 300px;
+  height: 50px;
 }
 
 .baseInput {
@@ -54,7 +64,7 @@ body {
 .box {
   position: absolute;
   top: 0;
-  height: 300px;
+  height: 450px;
   border-radius: 24px;
   box-shadow: 0 1px 6px 0 #d3d3d3;
   background: #fff;;
@@ -68,9 +78,10 @@ body {
 .pagination {
   width: 560px;
   position: absolute;
+  padding: 0 24px 0 51px;
   display: flex;
   justify-content: space-between;
-  top: 330px
+  top: 410px
 }
 
 .pagination > button {
@@ -86,6 +97,17 @@ body {
   margin: 0 4px;
 }
 
+button {
+  background-color: transparent;
+  cursor:pointer
+}
+
+button:focus-visible {
+  background-color: transparent;
+  border:none;
+  outline: none;
+}
+
 .button {
   padding: 2px;
   background-color: #fff;
@@ -94,10 +116,73 @@ body {
   border-radius: 4px;
   color: #fff;
   border:none;
-  cursor:pointer
 }
 
 .button:disabled {
   cursor:auto;
   background: lightblue;
+}
+
+li.active {
+  background-color: #ebebeb;
+}
+
+.ulResults li {
+  display: flex;
+}
+
+.buttonResult {
+  width: 85%;
+  height: 30px;
+  padding-left: 35px;
+  text-align: left;
+  background-color: transparent;
+  cursor: auto;
+  border: none;
+  font-weight: 600;
+}
+
+.buttonResult.purple {
+  color:purple
+}
+
+.buttonRemoveResult {
+  width: 10%;
+  height: 26px;
+  font-size: 0.875rem;
+  background-color: transparent;
+  border:none
+}
+
+.iconSearch {
+  width: 10%;
+  position: relative;
+  top: 4px;
+  left: 16px;
+  width: 16px;
+  height: 16px;
+  margin-top: 8px;
+  opacity: 0.5
+}
+
+.searchResults {
+  width: 455px;
+}
+
+.searchResults li {
+  margin-bottom: 30px;
+}
+
+.searchResults a {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.searchResults p {
+  margin-top: 10px;
+}
+
+.searchMeta {
+  margin-bottom: 40px;
+  color: gray
 }

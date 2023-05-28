@@ -23,6 +23,7 @@ export const Pagination: FC<Props> = ({ isLoading, page, totalPages, setPage }) 
 
     return (
       <button
+        key={index}
         className="button"
         disabled={isLoading || page === index}
         onClick={() => setPage(index)}

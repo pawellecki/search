@@ -1,3 +1,5 @@
+import { Pokemon } from "./types"
+
 const pokemonsNames = [
   "Bulbasaur",
   "Ivysaur",
@@ -799,7 +801,7 @@ const pokemonsNames = [
   "Meltan",
   "Melmetal",]
 
-export const allPokemons = pokemonsNames.map((name, index) => ({
+export const allPokemonsArray: Pokemon[] = pokemonsNames.map((name, index) => ({
   id: index + 1,
   name,
   searchResult: [
@@ -820,3 +822,9 @@ export const allPokemons = pokemonsNames.map((name, index) => ({
     },
   ]
 }))
+
+export const allPokemonsObject = allPokemonsArray.reduce<{ [key: string]: Pokemon }>((acc, pokemon) => {
+  acc = { ...acc, [pokemon.name]: pokemon }
+
+  return acc
+}, {})
