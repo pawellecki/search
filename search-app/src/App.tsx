@@ -60,6 +60,7 @@ export const App = () => {
 
   const onLiButtonKeyDown = (key: string, index: number, name: string) => {
     if (key === 'Enter') {
+      setName(name);
       setMoreResultsName(name);
       setVisited((prev) => [...prev, name]);
       setOpen(false);
@@ -121,6 +122,7 @@ export const App = () => {
                       className={`buttonResult ${checkWasVisited(pokemon.name) ? 'purple' : ''}`}
                       id={index.toString()}
                       onClick={() => {
+                        setName(pokemon.name);
                         setMoreResultsName(pokemon.name);
                         setVisited((prev) => [...prev, pokemon.name]);
                         setOpen(false);
