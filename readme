@@ -1,1 +1,4 @@
-react search
+to start:
+- clone repo
+- go to 'search-app' folder
+- 'yarn start' in console
