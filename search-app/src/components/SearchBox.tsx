@@ -30,11 +30,11 @@ export const SearchBox = ({
   const [page, setPage] = useState(1);
   const [visited, setVisited] = useState<string[]>([]);
 
+  const { data, status } = useGetPokemonsByName(name, page, perPage);
   const inputRef = useRef<HTMLInputElement>(null);
   const outsideClickRef = useOutsideClick(() => {
     setOpen(false);
   });
-  const { data, status } = useGetPokemonsByName(name, page, perPage);
 
   const updateName = (query: string) => {
     setName(query);
@@ -99,7 +99,7 @@ export const SearchBox = ({
   const isEmptyData = data && !data.data.length;
 
   return (
-    <div>
+    <>
       {open && name && (
         <div ref={outsideClickRef} className="box">
           <input
@@ -109,35 +109,38 @@ export const SearchBox = ({
             onChange={e => updateName(e.target.value)}
             onKeyDown={e => onInputKeyDown(e.key)}
           />
-          {isEmptyData && <p className="emptData">no Pokémon found</p>}
-          <ul>
-            {data?.data.map((pokemon: Pokemon, index: number) => (
-              <li className={listActiveIndex === index ? 'active' : ''} key={pokemon.name}>
-                <img className="iconSearch" src={iconSearch} alt="iconSearch" />
-                <button
-                  className={`buttonResult ${checkWasVisited(pokemon.name) ? 'purple' : ''}`}
-                  id={index.toString()}
-                  onClick={() => {
-                    setName(pokemon.name);
-                    setMoreResultsName(pokemon.name);
-                    setVisited(prev => [...prev, pokemon.name]);
-                    setOpen(false);
-                  }}
-                  onKeyDown={e => onLiButtonKeyDown(e.key, index, pokemon.name)}
-                >
-                  {pokemon.name}
-                </button>
-                {checkWasVisited(pokemon.name) && (
+          {isEmptyData ? (
+            <p className="emptData">no Pokémon found</p>
+          ) : (
+            <ul>
+              {data?.data.map((pokemon: Pokemon, index: number) => (
+                <li className={listActiveIndex === index ? 'active' : ''} key={pokemon.name}>
+                  <img className="iconSearch" src={iconSearch} alt="iconSearch" />
                   <button
-                    className="buttonRemoveResult"
-                    onClick={() => setVisited(prev => prev.filter(name => name !== pokemon.name))}
+                    className={`buttonResult ${checkWasVisited(pokemon.name) ? 'purple' : ''}`}
+                    id={index.toString()}
+                    onClick={() => {
+                      setName(pokemon.name);
+                      setMoreResultsName(pokemon.name);
+                      setVisited(prev => [...prev, pokemon.name]);
+                      setOpen(false);
+                    }}
+                    onKeyDown={e => onLiButtonKeyDown(e.key, index, pokemon.name)}
                   >
-                    Remove
+                    {pokemon.name}
                   </button>
-                )}
-              </li>
-            ))}
-          </ul>
+                  {checkWasVisited(pokemon.name) && (
+                    <button
+                      className="buttonRemoveResult"
+                      onClick={() => setVisited(prev => prev.filter(name => name !== pokemon.name))}
+                    >
+                      Remove
+                    </button>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
           <Pagination
             isLoading={status === 'loading'}
             page={page}
@@ -150,6 +153,6 @@ export const SearchBox = ({
           />
         </div>
       )}
-    </div>
+    </>
   );
 };
