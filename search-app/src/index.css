@@ -99,12 +99,12 @@ a:link, a:visite {
 
 button {
   background-color: transparent;
-  cursor:pointer
+  cursor: pointer
 }
 
 button:focus-visible {
   background-color: transparent;
-  border:none;
+  border: none;
   outline: none;
 }
 
@@ -115,7 +115,7 @@ button:focus-visible {
   background: #1a73e8;
   border-radius: 4px;
   color: #fff;
-  border:none;
+  border: none;
 }
 
 .button:disabled {
@@ -137,7 +137,6 @@ li.active {
   padding-left: 35px;
   text-align: left;
   background-color: transparent;
-  cursor: auto;
   border: none;
   font-weight: 600;
 }
@@ -185,4 +184,9 @@ li.active {
 .searchMeta {
   margin-bottom: 40px;
   color: gray
+}
+
+.emptData {
+  font-weight: bold;
+  margin-left: 54px;
 }
