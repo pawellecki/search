@@ -6,12 +6,12 @@
 - add subpage with links to Pokemon details
 
 **Solution components:**<br />
-App https://github.com/pawellecki/search-with-pagination-and-react-query/blob/main/search-app/src/App.tsx
-SearchBox https://github.com/pawellecki/search-with-pagination-and-react-query/blob/main/search-app/src/components/SearchBox.tsx
+App https://github.com/pawellecki/search-with-pagination-and-react-query/blob/main/search-app/src/App.tsx<br />
+SearchBox https://github.com/pawellecki/search-with-pagination-and-react-query/blob/main/search-app/src/components/SearchBox.tsx<br />
 Pagination https://github.com/pawellecki/search-with-pagination-and-react-query/blob/main/search-app/src/components/Pagination.tsx
 
 **Solution hooks:**<br />
-useQuery https://github.com/pawellecki/search-with-pagination-and-react-query/blob/main/search-app/src/hooks/useGetPokemonsByName.ts
+useQuery https://github.com/pawellecki/search-with-pagination-and-react-query/blob/main/search-app/src/hooks/useGetPokemonsByName.ts<br />
 click outside https://github.com/pawellecki/search-with-pagination-and-react-query/blob/main/search-app/src/hooks/useOutsideClick.ts
 _________________________________________________________________________________________________
 to start:
